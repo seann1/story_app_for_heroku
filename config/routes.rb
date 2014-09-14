@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :stories
   end
+  match('/search', {:via => :get, :to => 'stories#search'})
   
   root :to => 'users#index'
 end

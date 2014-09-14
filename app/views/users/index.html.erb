@@ -1,5 +1,6 @@
 <h1> Welcome <%= current_user.email %> </h1>
 
+
 <%= link_to "Add a story", new_user_story_path(current_user), class: "menu-item" %>
 <%= link_to "My stories", user_stories_path(current_user), class: "menu-item" %>
 <%= link_to "All stories", stories_path, class: "menu-item" %>

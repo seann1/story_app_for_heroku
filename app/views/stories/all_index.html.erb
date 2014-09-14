@@ -1,3 +1,9 @@
+<%= form_tag("/search", method: "get") do %>
+  <%= label_tag(:q, "Search for:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
 <% @stories.each do |story| %>
   <h2 id="story-title"><%= story.title %></h2>
   <div id="story-content">

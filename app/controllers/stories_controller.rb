@@ -3,13 +3,11 @@ class StoriesController < ApplicationController
   def index
     if params[:user_id] == nil
     @stories = Story.all
+      @story = Story.new
     render('stories/all_index.html.erb')
     else
-    # @stories = Story.all
-    # @stories.each do |story|
-    #   @user = Story.find(story.user_id)
-    # end
     @user = User.find(params[:user_id])
+      @story = Story.new
     end
   end
 
@@ -24,18 +22,24 @@ class StoriesController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:user_id])
-    @story = Story.create(story_params)
-    if @story.valid?
-      flash[:notice] = "Your story has been added."
-      redirect_to root_path
-    else
-      render 'new'
-    end
+      @user = User.find(params[:user_id])
+      @story = Story.create(story_params)
+      if @story.valid?
+        flash[:notice] = "Your story has been added."
+        redirect_to root_path
+      else
+        render 'new'
+      end
   end
 
   def edit
     @story = Story.find(params[:id])
+  end
+  
+  def search
+    @stories = []
+    @stories << Story.story_search(params[:q])
+    @stories = @stories.flatten
   end
 
   def update
