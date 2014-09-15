@@ -1,32 +1,62 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>StoryApp</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7 ]> <html class="ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie9" lang="en"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+  <head>
+  	<meta charset="utf-8" />
 
-<body>
-<div class="container">
+  	<!-- Uncomment to make IE8 render like IE7 -->
+  	<!-- <meta http-equiv="X-UA-Compatible" content="IE=7" /> -->
+
+  	<!-- Set the viewport width to device width for mobile -->
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  	<title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+
+  	<%= stylesheet_link_tag    "application" %>
+  	<%= javascript_include_tag "vendor/custom.modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <div class="container">
   <br>
   <br>
   <%= flash[:alert] %>
 <%= flash[:notice] %>
 <br>
-
-  <%= link_to "Home", root_path, { :class=>"btn btn-success" } %>
-  <% if current_user %>
-    Logged in as <%= current_user.email %>.
-    <%= link_to "Log Out", logout_path %>
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href="#">Story App</a></h1>
+    </li>
+    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+  </ul>
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <li class="active"><%= link_to "Home", root_path %></li>
+      <li class="active"><%= link_to 'Back', :back %></li>
+  
+      <% if current_user %>
+      <li class="active"><%= link_to "Log Out", logout_path %></li>
+      <li class="active", style="color: tomato; font-size: 10px; margin-top: 20px;">Logged in as <%= current_user.email %>.</li>
   <% else %>
-    <%= link_to "Sign Up", signup_path %> or
-    <%= link_to "Log In", login_path %>
-  <% end %>
+      <li class="active"><%= link_to "Sign Up", signup_path %></li> or
+      <li class="active"><%= link_to "Log In", login_path %></li>
+      <% end %>
+    </ul>
+  </section>
+    </nav>
 <br/>
 
-<%= yield %>
-</div>
+    <%= yield %>
 
-</body>
+    
+    <%= javascript_include_tag "application" %>
+    </div>
+  </body>
 </html>

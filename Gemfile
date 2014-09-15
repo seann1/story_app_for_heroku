@@ -10,6 +10,7 @@ gem 'turbolinks'
 gem 'bcrypt-ruby'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
+gem 'zurb-foundation'
 
 group :development do
   gem 'better_errors'
