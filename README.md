@@ -2,7 +2,7 @@ Story App for [Conventional rails assessment](http://www.learnhowtoprogram.com/l
 
 This application is basically a blog. It lets users sign in, write stories and comment on stories.
 
-The app is on [Heroku]().
+The app is on [Heroku](http://story-app-assesment.herokuapp.com/).
 
 ##Setup
 In your terminal, clone this repo:
