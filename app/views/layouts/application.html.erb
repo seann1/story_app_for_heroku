@@ -27,19 +27,24 @@
 <nav class="top-bar" data-topbar role="navigation">
   <ul class="title-area">
     <li class="name">
-      <h1><a href="#">Story App</a></h1>
+      <h1 class="name"><a class="name" href="/">Story App</a></h1>
     </li>
     <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
   </ul>
   <section class="top-bar-section">
     <!-- Right Nav Section -->
     <ul class="right">
-      <li class="active"><%= link_to "Home", root_path %></li>
+      <% paths_array = [signup_path, login_path, root_path] %>
+      <% unless paths_array.include?(request.path) %>
       <li class="active"><%= link_to 'Back', :back %></li>
+      <% end %>
 
       <% if current_user %>
-      <li class="active"><%= link_to "Log Out", logout_path %></li>
-      <li class="active", style="color: tomato; font-size: 10px; margin-top: 20px;">Logged in as <%= current_user.email %>.</li>
+      <li class="has-dropdown">
+      <a class="active"><%= current_user.email %>.</a>
+      <ul class="dropdown">
+        <li class="active"><%= link_to "Log Out", logout_path %></li>
+      </ul>
     </ul>
   <% else %>
   <li class="has-dropdown">
