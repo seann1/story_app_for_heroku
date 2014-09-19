@@ -43,6 +43,4 @@ describe "Commenting on a story" do
     click_button 'Create Comment'
     page.should have_content 'invalid'
   end
-
-
 end
