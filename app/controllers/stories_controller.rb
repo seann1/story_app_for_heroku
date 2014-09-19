@@ -49,6 +49,7 @@ class StoriesController < ApplicationController
     flash[:notice] = "Your story has been updated"
     redirect_to root_path
     else
+      flash[:notice] = "Your input was invalid"
       redirect_to edit_user_story_path({:user_id => @user.id, :id => @story.id})
     end
   end
