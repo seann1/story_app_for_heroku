@@ -40,15 +40,20 @@
       <% if current_user %>
       <li class="active"><%= link_to "Log Out", logout_path %></li>
       <li class="active", style="color: tomato; font-size: 10px; margin-top: 20px;">Logged in as <%= current_user.email %>.</li>
-  <% else %>
-      <li class="active"><%= link_to "Sign Up", signup_path %></li> or
-      <li class="active"><%= link_to "Log In", login_path %></li>
-      <% end %>
     </ul>
+  <% else %>
+  <li class="has-dropdown">
+    <a>welcome</a>
+    <ul class="dropdown">
+      <li class="active"><%= link_to "Sign Up", signup_path %></li>
+      <li class="active"><%= link_to "Log In", login_path %></li>
+    </ul>
+  </li>
+      <% end %>
   </section>
     </nav>
     <%= flash[:alert] %>
-<%= flash[:notice] %>
+    <%= flash[:notice] %>
 <br/>
 
     <%= yield %>
