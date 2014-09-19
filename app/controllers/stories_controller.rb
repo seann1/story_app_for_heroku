@@ -13,7 +13,7 @@ class StoriesController < ApplicationController
 
   def new
     @story = Story.new
-    @user = User.find(params[:user_id])
+    @user = User.find(current_user)
   end
 
   def show
