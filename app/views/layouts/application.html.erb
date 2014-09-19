@@ -23,11 +23,7 @@
 
   <body>
     <div class="container">
-  <br>
-  <br>
-  <%= flash[:alert] %>
-<%= flash[:notice] %>
-<br>
+
 <nav class="top-bar" data-topbar role="navigation">
   <ul class="title-area">
     <li class="name">
@@ -40,7 +36,7 @@
     <ul class="right">
       <li class="active"><%= link_to "Home", root_path %></li>
       <li class="active"><%= link_to 'Back', :back %></li>
-  
+
       <% if current_user %>
       <li class="active"><%= link_to "Log Out", logout_path %></li>
       <li class="active", style="color: tomato; font-size: 10px; margin-top: 20px;">Logged in as <%= current_user.email %>.</li>
@@ -51,11 +47,13 @@
     </ul>
   </section>
     </nav>
+    <%= flash[:alert] %>
+<%= flash[:notice] %>
 <br/>
 
     <%= yield %>
 
-    
+
     <%= javascript_include_tag "application" %>
     </div>
   </body>
