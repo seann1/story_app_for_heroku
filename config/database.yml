@@ -1,7 +1,9 @@
 development:
   adapter: postgresql
   database: story_app_development
+  host: /tmp
 
 test:
   adapter: postgresql
   database: story_app_test
+  host: /tmp
